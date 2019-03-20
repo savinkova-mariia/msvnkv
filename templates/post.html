@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <article class="post container-inner_narrow">
+        <h1 class="post__heading">{{ post.heading }}</h1>
+        {% if post.sub_heading %}
+            <h2 class="post__sub-heading">{{ post.sub_heading }}</h2>
+        {% endif %}
+        <time datetime="{{ post.publication_date|date:"Y-m-d" }}" class="post__publication-date">{{ post.publication_date|date:"d.m.Y" }}</time>
+
+        <div class="text-content">
+            {{ post.html_content|safe }}
+        </div>
+
+        <div class="post__footer">
+            <div class="post__copy-link-wrapper">
+                <button class="post__copy-link translucency">Copy link</button>
+            </div>
+            <div class="post__tags">
+                {% for t in post.tags.all %}
+                    <a class="post__tag translucency" href="{{ t.get_absolute_url }}">#{{ t.tag.name }}</a>
+                {% endfor %}
+
+            </div>
+        </div>
+
+        {% if next_post or prev_post %}
+            <div class="post__prev_n_next">
+                {% if prev_post %}
+                    <a class="post__navigate post__navigate_prev translucency" href="{{ prev_post.get_absolute_url }}">
+                        Previous {% if page_type == 'works' %}project{% else %}post{% endif %}
+                    </a>
+                {% endif %}
+
+                {% if next_post %}
+                    <a class="post__navigate post__navigate_next translucency" href="{{ next_post.get_absolute_url }}">
+                        Next {% if page_type == 'works' %}project{% else %}post{% endif %}
+                    </a>
+                {% endif %}
+            </div>
+        {% endif %}
+    </article>
+{% endblock %}

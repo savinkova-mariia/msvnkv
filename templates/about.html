@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <section class="about clearfix">
+        <img class="about__photo " alt="" src="{{ about_page.photo.url }}">
+        <div class="text-content">
+            {{ about_page.html_content|safe }}
+        </div>
+    </section>
+{% endblock %}

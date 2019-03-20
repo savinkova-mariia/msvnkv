@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% spaceless %}
+<html lang="en">
+    {% load static compress %}
+    <head>
+        <meta charset="UTF-8">
+        <title>{{ metatag.title }}</title>
+        <meta name="description" content="{{ metatag.description }}">
+        <meta name="keywords" content="{{ metatag.keywords }}">
+        <meta name="viewport" content="width=320, initial-scale=1">
+        <link rel="shortcut icon" href="{% static 'resources/img/favicon.png' %}">
+
+        {% compress css %}
+            <link rel="stylesheet" href="{% static 'vendors/reset/reset.4.0.css' %}">
+            <link rel="stylesheet" href="{% static 'resources/css/reset-button.css' %}">
+            <link rel="stylesheet" href="{% static 'vendors/roboto-mono/robotomono.css' %}">
+            <link rel="stylesheet" href="{% static 'vendors/rubik/rubik.css' %}">
+            <link rel="stylesheet" href="{% static 'resources/css/variables.css' %}">
+            <link rel="stylesheet" href="{% static 'resources/css/common.css' %}">
+            <link rel="stylesheet" href="{% static 'resources/css/desktop.css' %}">
+            <link rel="stylesheet" href="{% static 'resources/css/mobile.css' %}">
+            <link rel="stylesheet" href="{% static 'resources/css/visibility.css' %}">
+        {% endcompress %}
+
+        {{ head_injection|safe }}
+    </head>
+
+    <body class="page_{{ page_type }}">
+        <header class="header container">
+            {% if not page_type == 'homepage' %}
+                <a class="header__homepage-link" href="/">
+                    <h1 class="header__title">Mariia Savinkova</h1>
+                </a>
+            {% endif %}
+            <nav class="main-menu">
+                <a class="main-menu__item main-menu__item_works translucency" href="/works/">Works</a>
+                <a class="main-menu__item main-menu__item_blog translucency" href="/blog/">Blog</a>
+                <a class="main-menu__item main-menu__item_about translucency" href="/about/">About</a>
+            </nav>
+        </header>
+
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <footer class="footer container">
+            <div class="footer__copyright">
+                {% now "Y" as current_year %}
+                Copyright &copy;2019{% if current_year != '2019' %} &mdash; {{ current_year }}{% endif %}
+            </div>
+
+            <div class="footer__social">
+                <a class="footer__social-link translucency" href="https://www.instagram.com/m_svnkv/">Inst</a>
+                <a class="footer__social-link translucency" href="#">Tel</a>
+                <a class="footer__social-link translucency" href="#">Mail</a>
+            </div>
+        </footer>
+
+        {% compress js %}
+            <script src="{% static 'resources/js/helpers.js' %}"></script>
+            <script src="{% static 'resources/js/main.js' %}"></script>
+        {% endcompress %}
+
+        {{ body_injection|safe }}
+    </body>
+</html>
+{% endspaceless %}

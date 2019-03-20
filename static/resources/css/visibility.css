@@ -1,0 +1,20 @@
+.invisible
+{
+    visibility: hidden;
+    transition: all var(--transition-duration) ease-out;
+}
+
+.visible
+{
+    visibility: visible;
+}
+
+.non-display
+{
+    display: none;
+}
+
+.strong-hidden
+{
+    display: none !important;
+}

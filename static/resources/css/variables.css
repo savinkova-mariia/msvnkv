@@ -1,0 +1,16 @@
+:root
+{
+    --font-family: 'Roboto Mono', monospace;
+    --second-font-family: 'Rubik', sans-serif;
+
+    --font-size: 31px;
+    --line-height: 1.32em;
+    --font-color: #000;
+    --font-weight: 400;
+
+    --translucency: 0.70;
+    --transition-duration: 0.35s;
+
+    --link-color: #0087d8;
+    --orange-color: #f47d13;
+}

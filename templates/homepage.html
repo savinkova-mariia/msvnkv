@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <section class="homepage container-inner_close">
+        <h1 class="homepage__title">Mariia Savinkova</h1>
+
+        <div class="text-content">
+            {{ homepage.html_content|safe }}
+        </div>
+
+        {% if latest_post %}
+            <a href="{{ latest_post.get_absolute_url }}" class="homepage__start translucency"></a>
+        {% endif %}
+    </section>
+{% endblock %}

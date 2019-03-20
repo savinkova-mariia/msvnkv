@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <section class="works">
+        {% for project in items %}
+            <a class="project" href="{{ project.get_absolute_url }}" title="{{ project.heading }}">
+                <div class="project__inner" style="background-image: url({{ project.image_preview.url }});">
+                </div>
+                <span class="project__heading">{{ project.heading }}</span>
+            </a>
+        {% endfor %}
+    </section>
+{% endblock %}

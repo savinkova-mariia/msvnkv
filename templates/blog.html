@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <section class="blog container-inner_narrow">
+        {% for post in items %}
+            <div class="blog-item translucency">
+                <time class="blog-item__publication-date" datetime="{{ post.publication_date|date:"Y-m-d" }}">
+                    {{ post.publication_date|date:"d.m.Y" }}
+                </time>
+
+                <a class="blog-item__heading" href="{{ post.get_absolute_url }}">
+                    {{ post.heading }}
+                </a>
+            </div>
+        {% endfor %}
+    </section>
+{% endblock %}
