@@ -3,3 +3,6 @@ Markdown
 django-compressor
 Pillow
 martor
+django-preferences
+unidecode
+gunicorn
