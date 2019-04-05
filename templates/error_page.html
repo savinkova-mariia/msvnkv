@@ -1,0 +1,13 @@
+{% extends "layout_without_header.html" %}
+
+{% block content %}
+    <div class="error-page">
+        <div class="error-page__status-code">
+            {% block error_code %}{% endblock %}
+        </div>
+        <div class="error-page__description">
+            {% block error_description %}{% endblock %}
+        </div>
+        <a href='/' class="error-page__homepage-link translucency">Back to homepage<a>
+    </div>
+{% endblock %}

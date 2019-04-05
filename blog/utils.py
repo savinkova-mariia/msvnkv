@@ -5,6 +5,13 @@ import time
 from unidecode import unidecode
 
 
+def to_int(val, at_error=None):
+    try:
+        return int(val)
+    except (ValueError, TypeError):
+        return at_error
+
+
 def transliterate(line):
     return slugify(unidecode(line))
 

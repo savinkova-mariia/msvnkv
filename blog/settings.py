@@ -108,6 +108,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+PAGINATION_PAGE_SIZE = 10
+
 LANGUAGE_CODE = 'ru-RU'
 TIME_ZONE = 'Asia/Yekaterinburg'
 USE_I18N = True

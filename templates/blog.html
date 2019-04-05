@@ -2,6 +2,10 @@
 
 {% block content %}
     <section class="blog container-inner_narrow">
+        {% if tag %}
+            <h1 class="blog__heading">#{{ tag }}</h1>
+        {% endif %}
+
         {% for post in items %}
             <div class="blog-item translucency">
                 <time class="blog-item__publication-date" datetime="{{ post.publication_date|date:"Y-m-d" }}">
@@ -13,5 +17,18 @@
                 </a>
             </div>
         {% endfor %}
+
+        {% if paginator.num_pages > 1 %}
+            <div class="paginator">
+                {% for p in paginator.page_range %}
+                    <a
+                        class="paginator__page {% if p == current_page %}paginator__page_active{% else %}translucency{% endif %}"
+                        href="{% if p == current_page %}#{% else %}?page={{ p }}{% endif %}"
+                        {% if p == current_page %}onclick="return false;"{% endif %}>
+                        {{ p }}
+                    </a>
+                {% endfor %}
+            </div>
+        {% endif %}
     </section>
 {% endblock %}

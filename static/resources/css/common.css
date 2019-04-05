@@ -398,3 +398,59 @@ body
     line-height: normal;
     margin-bottom: 30px;
 }
+
+.blog__heading
+{
+    font-family: var(--second-font-family);
+    font-weight: 500;
+    font-size: 37px;
+    text-transform: lowercase;
+    line-height: normal;
+    margin-bottom: 91px;
+    text-align: center;
+}
+
+.error-page
+{
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.error-page__status-code
+{
+    color: var(--orange-color);
+    font-size: 210px;
+    line-height: 1.2;
+    margin-top: 100px;
+}
+
+.error-page__description
+{
+    line-height: normal;
+    font-size: 80px;
+    text-transform: lowercase;
+    margin-bottom: 50px;
+}
+
+.error-page__homepage-link
+{
+    font-size: 28px;
+    color: #fff;
+    background-color: var(--orange-color);
+    padding: 20px 55px;
+    text-transform: lowercase;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.paginator__page
+{
+    color: #000;
+    text-decoration: none;
+}
+
+.paginator__page_active
+{
+    opacity: var(--translucency);
+}

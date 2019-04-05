@@ -1,5 +1,9 @@
 from blog.models import Post, Project, Tag
+from blog.utils import to_int
+from django.conf import settings
+from django.core.paginator import Paginator
 from django.http import HttpResponse, Http404
+from django.template.loader import render_to_string
 from django.template.response import TemplateResponse
 from preferences import preferences
 
@@ -64,9 +68,6 @@ def post_list(request, page_type, tag_slug=None):
     model = page_type == 'blog' and Post or Project
     items = model.objects.filter(is_published=True)
 
-    if not items:
-        raise Http404
-
     tag = None
     if tag_slug:
         tag = Tag.objects.filter(slug=tag_slug).first()
@@ -75,6 +76,15 @@ def post_list(request, page_type, tag_slug=None):
 
         items = items.filter(tags__tag=tag)
 
+    if not items:
+        raise Http404
+
+    paginator = Paginator(items, settings.PAGINATION_PAGE_SIZE)
+    page = to_int(request.GET.get('page'), 1)
+    page = min(max(page, 1), paginator.count)
+
+    items = paginator.get_page(page)
+
     template = '%s.html' % page_type
     set_metatag_data(request, page_type)
 
@@ -82,6 +92,8 @@ def post_list(request, page_type, tag_slug=None):
         'items': items,
         'page_type': page_type,
         'tag': tag,
+        'paginator': paginator,
+        'current_page': page,
     })
 
 
@@ -93,4 +105,10 @@ def robots_txt(request):
 
 
 def sitemap_xml(request):
-    raise Http404
+    entries = list(Post.objects.filter(is_published=True))
+    entries += list(Project.objects.filter(is_published=True))
+
+    content = render_to_string('sitemap.xml', {
+        'entries': entries,
+    })
+    return HttpResponse(content, content_type='application/xml')

@@ -109,6 +109,13 @@ class PostMixin(models.Model):
     def html_content(self):
         return markdown(self.content or '')
 
+    @property
+    def last_modified(self):
+        if not self.publication_date:
+            return None
+
+        return max(self.publication_date, self.updated_at.date())
+
     def save(self, *args, **kwargs):
         self.set_slug(source=self.heading)
 
