@@ -115,7 +115,7 @@ body
 {
     font-family: var(--second-font-family);
     font-weight: 500;
-    font-size: 67px;
+    font-size: 48px;
     text-transform: lowercase;
     line-height: normal;
 }
@@ -130,7 +130,7 @@ body
 .footer__copyright
 {
     flex-grow: 1;
-    font-size: 37px;
+    font-size: 18px;
     font-weight: 500;
     text-transform: lowercase;
 }
@@ -145,7 +145,7 @@ body
 {
     text-transform: uppercase;
     margin-left: 42px;
-    font-size: 37px;
+    font-size: 18px;
     text-transform: uppercase;
     text-decoration: none;
     color: var(--font-color);
@@ -162,7 +162,7 @@ body
 {
     font-family: var(--second-font-family);
     font-weight: 500;
-    font-size: 49px;
+    font-size: 18px;
     line-height: normal;
 
 }
